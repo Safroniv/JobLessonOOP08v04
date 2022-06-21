@@ -22,5 +22,6 @@ public interface IObjectFileSystem
 public class ObjectFileSystem
 {
     public string ObjectName { get; set; }
+    public string ObjectType { get; set; }
     public string ObjectPath { get; set; }
 }
