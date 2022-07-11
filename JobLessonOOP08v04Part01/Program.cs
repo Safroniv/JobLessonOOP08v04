@@ -19,57 +19,93 @@
 // кол-во слов без пробелов).    
 //Предусмотреть возможность изменения атрибутов файлов.  
 
-Console.WriteLine("Hello, World!");
+Console.WriteLine("Тестовый вывод категории");
+ElementDirectoryOfFileSystem elementDirectoryOfFileSystem = new ElementDirectoryOfFileSystem();
+elementDirectoryOfFileSystem.Path = $@"C:\";
+ElementDirectory ElementDirectory = new ElementDirectory();
+ElementDirectory.GetElement(elementDirectoryOfFileSystem.Path);
 
 
+/// <summary>
+/// Класс определяет действия над директорией
+/// </summary>
+public class ElementDirectory : IElementOfFileSystem
+{    
+    ElementDirectoryOfFileSystem directoryOfFileSystem = new ElementDirectoryOfFileSystem();
+    
+    
+    public void GetElement(string path)
+    {
+        directoryOfFileSystem.Path = $@"C:\";
+        path = directoryOfFileSystem.Path;
+        if(Directory.Exists(path))
+        {
+            string[] dirs = Directory.GetDirectories(path);
+            foreach (string stringPath in dirs)
+            { Console.WriteLine(stringPath);}
+        }
+    }
+    public void CopyElement(string path, string newPath)
+    {
+        throw new NotImplementedException();
+    }
 
+    public void CreateElement(string path)
+    {
+        throw new NotImplementedException();
+    }
 
-public class ObjectDirectory
-{
+    public void DeleteElement(string path)
+    {
+        throw new NotImplementedException();
+    }
+    public void RenameElement(string path, string newName)
+    {
+        throw new NotImplementedException();
+    }
 
+    public void TransferElement(string path, string newPath)
+    {
+        throw new NotImplementedException();
+    }
 }
-public class ObjectFile 
+public class ElementFile
 {
-
+    
 }
 
-public interface IFileOfFileSystem
+public interface IElementOfFileSystem
 {
     //Интерфейс требует реализации по CRUD (Create Read Update Delete),
     //но с учётом переноса и копирования:
     //Read Create Delete Rename Copy Transfer - RCDRCT
-    public void GetFile(string path);
-    public void CreateFile(string path);
-    public void DeleteFile(string path);
-    public void RenameFile(string path, string newName);
-    public void CopyFile(string path, string newPath);
-    public void TransferFile(string path, string newPath);
-}
-public interface IDirectoryOfFileSystem
-{
-    //Интерфейс требует реализации по CRUD (Create Read Update Delete),
-    //но с учётом переноса и копирования:
-    //Read Create Delete Rename Copy Transfer - RCDRCT
-    public void GetDirectiry (string path);
-    public void CreateDirectiry(string path);
-    public void DeleteDirectiry(string path);
-    public void RenameDirectiry(string path, string newName);
-    public void CopyDirectiry(string path, string newPath);
-    public void TransferDirectiry(string path, string newPath);
+    public void GetElement (string path);
+    public void CreateElement (string path);
+    public void DeleteElement (string path);
+    public void RenameElement (string path, string newName);
+    public void CopyElement (string path, string newPath);
+    public void TransferElement (string path, string newPath);
 }
 
-public class BaseElementOfFileSystem
+public abstract class BaseElementOfFileSystem
 {
     public string? Name { get; set; }
     public string? Path { get; set; }
     public DateTime? CreateDate { get; set; }
+    public abstract TypeElementOfFileSystem Type { get;}
 }
 
 public class ElementFileOfFileSystem : BaseElementOfFileSystem
 {
-
+    public override TypeElementOfFileSystem Type => TypeElementOfFileSystem.ElementFile;
 }
 public class ElementDirectoryOfFileSystem : BaseElementOfFileSystem
 {
+    public override TypeElementOfFileSystem Type => TypeElementOfFileSystem.ElementDirectory;
+}
 
+public enum TypeElementOfFileSystem
+{
+    ElementFile,
+    ElementDirectory,
 }
