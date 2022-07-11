@@ -21,7 +21,7 @@
 
 Console.WriteLine("Тестовый вывод категории");
 ElementDirectoryOfFileSystem elementDirectoryOfFileSystem = new ElementDirectoryOfFileSystem();
-elementDirectoryOfFileSystem.Path = $@"C:\";
+elementDirectoryOfFileSystem.Path = $@"D:\";
 ElementDirectory ElementDirectory = new ElementDirectory();
 ElementDirectory.GetElement(elementDirectoryOfFileSystem.Path);
 
@@ -30,17 +30,13 @@ ElementDirectory.GetElement(elementDirectoryOfFileSystem.Path);
 /// Класс определяет действия над директорией
 /// </summary>
 public class ElementDirectory : IElementOfFileSystem
-{    
-    ElementDirectoryOfFileSystem directoryOfFileSystem = new ElementDirectoryOfFileSystem();
-    
-    
+{          
     public void GetElement(string path)
     {
-        directoryOfFileSystem.Path = $@"C:\";
-        path = directoryOfFileSystem.Path;
         if(Directory.Exists(path))
         {
             string[] dirs = Directory.GetDirectories(path);
+            Console.WriteLine($"Содержимое категории - {path}");
             foreach (string stringPath in dirs)
             { Console.WriteLine(stringPath);}
         }
