@@ -24,86 +24,52 @@ Console.WriteLine("Hello, World!");
 
 
 
-public class ObjectDirectory : IObjectFileSystem
+public class ObjectDirectory
 {
-    public void CopyObjectFileSystem(string path, string newPath)
-    {
-        throw new NotImplementedException();
-    }
 
-    public void CreateObjectFileSystem(string path)
-    {
-        throw new NotImplementedException();
-    }
-
-    public void DeleteObjectFileSystem(string path)
-    {
-        throw new NotImplementedException();
-    }
-
-    public void GetObjectFileSystem(string path)
-    {
-        throw new NotImplementedException();
-    }
-
-    public void RenameObjectFileSystem(string path, string newName)
-    {
-        throw new NotImplementedException();
-    }
-
-    public void TransferObjectFileSystem(string path, string newPath)
-    {
-        throw new NotImplementedException();
-    }
 }
-public class ObjectFile : IObjectFileSystem
+public class ObjectFile 
 {
-    public void CopyObjectFileSystem(string path, string newPath)
-    {
-        throw new NotImplementedException();
-    }
 
-    public void CreateObjectFileSystem(string path)
-    {
-        throw new NotImplementedException();
-    }
-
-    public void DeleteObjectFileSystem(string path)
-    {
-        throw new NotImplementedException();
-    }
-
-    public void GetObjectFileSystem(string path)
-    {
-        throw new NotImplementedException();
-    }
-
-    public void RenameObjectFileSystem(string path, string newName)
-    {
-        throw new NotImplementedException();
-    }
-
-    public void TransferObjectFileSystem(string path, string newPath)
-    {
-        throw new NotImplementedException();
-    }
 }
-public interface IObjectFileSystem
+
+public interface IFileOfFileSystem
 {
     //Интерфейс требует реализации по CRUD (Create Read Update Delete),
     //но с учётом переноса и копирования:
     //Read Create Delete Rename Copy Transfer - RCDRCT
-    public void GetObjectFileSystem (string path);
-    public void CreateObjectFileSystem (string path);
-    public void DeleteObjectFileSystem (string path);
-    public void RenameObjectFileSystem (string path, string newName);
-    public void CopyObjectFileSystem (string path, string newPath);
-    public void TransferObjectFileSystem (string path, string newPath);
+    public void GetFile(string path);
+    public void CreateFile(string path);
+    public void DeleteFile(string path);
+    public void RenameFile(string path, string newName);
+    public void CopyFile(string path, string newPath);
+    public void TransferFile(string path, string newPath);
+}
+public interface IDirectoryOfFileSystem
+{
+    //Интерфейс требует реализации по CRUD (Create Read Update Delete),
+    //но с учётом переноса и копирования:
+    //Read Create Delete Rename Copy Transfer - RCDRCT
+    public void GetDirectiry (string path);
+    public void CreateDirectiry(string path);
+    public void DeleteDirectiry(string path);
+    public void RenameDirectiry(string path, string newName);
+    public void CopyDirectiry(string path, string newPath);
+    public void TransferDirectiry(string path, string newPath);
 }
 
-public class ObjectFileSystem
+public class BaseElementOfFileSystem
 {
-    public string? ObjectName { get; set; }
-    public string? ObjectType { get; set; }
-    public string? ObjectPath { get; set; }
+    public string? Name { get; set; }
+    public string? Path { get; set; }
+    public DateTime? CreateDate { get; set; }
+}
+
+public class ElementFileOfFileSystem : BaseElementOfFileSystem
+{
+
+}
+public class ElementDirectoryOfFileSystem : BaseElementOfFileSystem
+{
+
 }
