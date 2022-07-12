@@ -19,89 +19,24 @@
 // кол-во слов без пробелов).    
 //Предусмотреть возможность изменения атрибутов файлов.  
 
-Console.WriteLine("Тестовый вывод категории");
-ElementDirectoryOfFileSystem elementDirectoryOfFileSystem = new ElementDirectoryOfFileSystem();
-elementDirectoryOfFileSystem.Path = $@"D:\";
-ElementDirectory ElementDirectory = new ElementDirectory();
-ElementDirectory.GetElement(elementDirectoryOfFileSystem.Path);
+using JobLessonOOP08v04Part01.ElementsFileSystem;
+using JobLessonOOP08v04Part01.Realises;
 
+ElementDirectory elementDirectory = new ElementDirectory();
+ElementFile elementFile = new ElementFile();
+string path = @"D:\\";
+string name = null;
 
-/// <summary>
-/// Класс определяет действия над директорией
-/// </summary>
-public class ElementDirectory : IElementOfFileSystem
-{          
-    public void GetElement(string path)
-    {
-        if(Directory.Exists(path))
-        {
-            string[] dirs = Directory.GetDirectories(path);
-            Console.WriteLine($"Содержимое категории - {path}");
-            foreach (string stringPath in dirs)
-            { Console.WriteLine(stringPath);}
-        }
-    }
-    public void CopyElement(string path, string newPath)
-    {
-        throw new NotImplementedException();
-    }
-
-    public void CreateElement(string path)
-    {
-        throw new NotImplementedException();
-    }
-
-    public void DeleteElement(string path)
-    {
-        throw new NotImplementedException();
-    }
-    public void RenameElement(string path, string newName)
-    {
-        throw new NotImplementedException();
-    }
-
-    public void TransferElement(string path, string newPath)
-    {
-        throw new NotImplementedException();
-    }
-}
-public class ElementFile
+while (true)
 {
-    
-}
-
-public interface IElementOfFileSystem
-{
-    //Интерфейс требует реализации по CRUD (Create Read Update Delete),
-    //но с учётом переноса и копирования:
-    //Read Create Delete Rename Copy Transfer - RCDRCT
-    public void GetElement (string path);
-    public void CreateElement (string path);
-    public void DeleteElement (string path);
-    public void RenameElement (string path, string newName);
-    public void CopyElement (string path, string newPath);
-    public void TransferElement (string path, string newPath);
-}
-
-public abstract class BaseElementOfFileSystem
-{
-    public string? Name { get; set; }
-    public string? Path { get; set; }
-    public DateTime? CreateDate { get; set; }
-    public abstract TypeElementOfFileSystem Type { get;}
-}
-
-public class ElementFileOfFileSystem : BaseElementOfFileSystem
-{
-    public override TypeElementOfFileSystem Type => TypeElementOfFileSystem.ElementFile;
-}
-public class ElementDirectoryOfFileSystem : BaseElementOfFileSystem
-{
-    public override TypeElementOfFileSystem Type => TypeElementOfFileSystem.ElementDirectory;
-}
-
-public enum TypeElementOfFileSystem
-{
-    ElementFile,
-    ElementDirectory,
+    Console.WriteLine($"-----------------------------------------");
+    elementDirectory.GetDir(path);
+    elementFile.GetFilesOfDir(path);
+    elementDirectory.GetDiscs();
+    Console.WriteLine("Укажите категорию");
+    path = Console.ReadLine();
+    Console.WriteLine("Укажите имя");
+    name = Console.ReadLine();
+    elementDirectory.CreateDir(path, name);
+    Console.Clear();
 }
