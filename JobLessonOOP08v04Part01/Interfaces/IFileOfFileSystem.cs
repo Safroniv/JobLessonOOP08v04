@@ -8,8 +8,8 @@
         public void GetFilesOfDir(string path);
         public void CreateFile(string path, string name);
         public void DeleteFile(string path, string name);
-        public void RenameFile(string path, string oldName, string newName);
-        public void CopyFile(string path, string newPath, string name);
-        public void TransferFile(string path, string newPath, string name);
+        public void RenameFile(string path, string newPath);
+        public void CopyFile(string path, string newPath);
+        public void TransferFile(string path, string newPath);
     }
 }

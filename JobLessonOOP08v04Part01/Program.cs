@@ -4,8 +4,8 @@
 //1. Реализовать простейший файловый менеджер с использованием ООП
 //(классы, наследование и прочее).
 //### Файловый менеджер должен иметь возможность:
-//*показывать содержимое дисков;
-//*создавать папки / файлы;
+//*показывать содержимое дисков; + elementDirectory.GetDiscs();
+//*создавать папки / файлы; + elementDirectory.CreateDir(path, name); +elementFile.CreateFile(path, name);
 //*удалять папки / файлы;
 //*переименовывать папки / файлы;
 //*копировать / переносить папки / файлы;
@@ -19,24 +19,7 @@
 // кол-во слов без пробелов).    
 //Предусмотреть возможность изменения атрибутов файлов.  
 
-using JobLessonOOP08v04Part01.ElementsFileSystem;
-using JobLessonOOP08v04Part01.Realises;
+using JobLessonOOP08v04Part01.CaseCommands;
 
-ElementDirectory elementDirectory = new ElementDirectory();
-ElementFile elementFile = new ElementFile();
-string path = @"D:\\";
-string name = null;
-
-while (true)
-{
-    Console.WriteLine($"-----------------------------------------");
-    elementDirectory.GetDir(path);
-    elementFile.GetFilesOfDir(path);
-    elementDirectory.GetDiscs();
-    Console.WriteLine("Укажите категорию");
-    path = Console.ReadLine();
-    Console.WriteLine("Укажите имя");
-    name = Console.ReadLine();
-    elementDirectory.CreateDir(path, name);
-    Console.Clear();
-}
+CaseCommands caseCommands = new();
+caseCommands.Case();

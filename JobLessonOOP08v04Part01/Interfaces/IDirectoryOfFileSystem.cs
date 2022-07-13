@@ -9,8 +9,8 @@
         public void GetDir(string path);
         public void CreateDir(string path, string name);
         public void DeleteDir(string path, string name);
-        public void RenameDir(string path, string oldName, string newName);
-        public void CopyDir(string path, string newPath, string name);
-        public void TransferDir(string path, string newPath, string name);
+        public void RenameDir(string path, string newPath);
+        public void CopyDir(string path, string newPath);
+        public void TransferDir(string path, string newPath);
     }
 }
