@@ -7,7 +7,7 @@ namespace JobLessonOOP08v04Part01.RealiseInterfaces
     /// </summary>
     public class ElementDirectory : IDirectoryOfFileSystem
     {
-        //Попробовать обернуть всё вместе в try catch
+        
         public static List<DirectoryInfo>? Dirs(string path)
         {
             if (path == null || path == "")

@@ -4,7 +4,6 @@ namespace JobLessonOOP08v04Part01.RealiseInterfaces
 {
     public class ElementFile : IFileOfFileSystem
     {
-        //Попробовать обернуть всё вместе в try catch
         public static List<FileInfo>? GetFiles(string path)
         {
             if (path == null || path == "")
@@ -31,6 +30,7 @@ namespace JobLessonOOP08v04Part01.RealiseInterfaces
                         ExeptionInfo();
                 }
             }
+            else { ExeptionInfo(); }
         }
 
         public void DeleteFile(string path, string name)
@@ -63,6 +63,7 @@ namespace JobLessonOOP08v04Part01.RealiseInterfaces
             FileInfo fileInfo = new(path);
             if (fileInfo.Exists)
                 fileInfo.MoveTo(newPath);
+            else { ExeptionInfo(); }
         }
         public void SearchFilesFromMask(string path, string name)
         {
@@ -77,6 +78,8 @@ namespace JobLessonOOP08v04Part01.RealiseInterfaces
             FileInfo fileInfo = new(path);
             if (fileInfo.Exists)
                 Console.WriteLine($"Имя файла: {fileInfo.Name}, размер файла: {fileInfo.Length}");
+            else
+                ExeptionInfo();            
         }
         public void InfoTextFile(string path)
         {
@@ -170,6 +173,8 @@ namespace JobLessonOOP08v04Part01.RealiseInterfaces
 
             Console.WriteLine("Атрибут только для чтения: " + fileInfo.IsReadOnly);
         }
+
+
 
         public void ExeptionInfo()
         {

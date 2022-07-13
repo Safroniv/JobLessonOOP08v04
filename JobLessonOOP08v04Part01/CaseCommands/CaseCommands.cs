@@ -9,7 +9,6 @@ namespace JobLessonOOP08v04Part01.CaseCommands
 {
 	public class CaseCommands
 	{
-
 		public void Case()
 		{
 
@@ -26,13 +25,12 @@ namespace JobLessonOOP08v04Part01.CaseCommands
 				ElementDirectory elementDirectory = new();
 				ElementFile elementFile = new();
 				string path = @"C:\\";
-				//подумать над альтернативным именем - nameOrNewPath
 				string nameOrNewPath = null;
 				switch (command)
 				{
 					case "info":
 						//"info - показать список команд для работы с менеджером",
-						foreach (var infoList in CommandsInfo.Commandsaf)
+						foreach (var infoList in CommandsInfo.Commands)
 							Console.WriteLine(infoList);
 						break;
 
